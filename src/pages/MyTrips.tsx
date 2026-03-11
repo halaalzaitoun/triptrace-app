@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function MyTrips() {
   const { trips, addTrip, removePlaceFromTrip } = useTrips();
+  const navigate = useNavigate();
   const [showNew, setShowNew] = useState(false);
   const [newName, setNewName] = useState("");
   const [newDest, setNewDest] = useState("");
