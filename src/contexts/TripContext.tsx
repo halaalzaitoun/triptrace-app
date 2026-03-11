@@ -7,6 +7,7 @@ interface TripContextType {
   addPlaceToTrip: (tripId: string, placeId: string) => void;
   removePlaceFromTrip: (tripId: string, placeId: string) => void;
   isPlaceSaved: (placeId: string) => boolean;
+  getTripsForPlace: (placeId: string) => Trip[];
 }
 
 const TripContext = createContext<TripContextType | null>(null);
@@ -39,8 +40,11 @@ export function TripProvider({ children }: { children: ReactNode }) {
   const isPlaceSaved = (placeId: string) =>
     trips.some((t) => t.placeIds.includes(placeId));
 
+  const getTripsForPlace = (placeId: string) =>
+    trips.filter((t) => t.placeIds.includes(placeId));
+
   return (
-    <TripContext.Provider value={{ trips, addTrip, addPlaceToTrip, removePlaceFromTrip, isPlaceSaved }}>
+    <TripContext.Provider value={{ trips, addTrip, addPlaceToTrip, removePlaceFromTrip, isPlaceSaved, getTripsForPlace }}>
       {children}
     </TripContext.Provider>
   );
