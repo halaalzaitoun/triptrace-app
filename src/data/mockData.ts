@@ -44,6 +44,17 @@ export interface Trip {
   placeIds: string[];
 }
 
+export interface PinnedTrip {
+  id: string;
+  travelerId: string;
+  title: string;
+  destination: string;
+  coverImage: string;
+  dateRange: string;
+  summary: string;
+  placeIds: string[];
+}
+
 export const travelers: Traveler[] = [
   { id: "t1", name: "Sofia Mendes", avatar: "https://i.pravatar.cc/150?img=1", bio: "Photographer & food lover. Always chasing golden hour.", countriesVisited: 24 },
   { id: "t2", name: "James Chen", avatar: "https://i.pravatar.cc/150?img=3", bio: "Remote worker exploring one city at a time.", countriesVisited: 18 },
