@@ -7,6 +7,7 @@ interface TripContextType {
   addPlaceToTrip: (tripId: string, placeId: string) => void;
   removePlaceFromTrip: (tripId: string, placeId: string) => void;
   isPlaceSaved: (placeId: string) => boolean;
+  getTripsForPlace: (placeId: string) => Trip[];
 }
 
 const TripContext = createContext<TripContextType | null>(null);
