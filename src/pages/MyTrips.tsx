@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useTrips } from "@/contexts/TripContext";
 import { getPlace } from "@/data/mockData";
 import PlaceCard from "@/components/PlaceCard";
-import { Plus, MapPin, Trash2 } from "lucide-react";
+import { Plus, MapPin, Trash2, Pin } from "lucide-react";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 export default function MyTrips() {
   const { trips, addTrip, removePlaceFromTrip } = useTrips();
