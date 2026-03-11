@@ -44,6 +44,17 @@ export interface Trip {
   placeIds: string[];
 }
 
+export interface PinnedTrip {
+  id: string;
+  travelerId: string;
+  title: string;
+  destination: string;
+  coverImage: string;
+  dateRange: string;
+  summary: string;
+  placeIds: string[];
+}
+
 export const travelers: Traveler[] = [
   { id: "t1", name: "Sofia Mendes", avatar: "https://i.pravatar.cc/150?img=1", bio: "Photographer & food lover. Always chasing golden hour.", countriesVisited: 24 },
   { id: "t2", name: "James Chen", avatar: "https://i.pravatar.cc/150?img=3", bio: "Remote worker exploring one city at a time.", countriesVisited: 18 },
@@ -183,6 +194,39 @@ export const initialTrips: Trip[] = [
   { id: "trip2", name: "Tokyo Adventure", destination: "Tokyo", placeIds: [] },
 ];
 
+export const initialPinnedTrips: PinnedTrip[] = [
+  {
+    id: "pt1",
+    travelerId: "t1",
+    title: "Golden Hour in Lisbon",
+    destination: "Lisbon, Portugal",
+    coverImage: lisbon1,
+    dateRange: "Sep 14 – 18, 2025",
+    summary: "Chased sunsets across Lisbon's hilltop miradouros and rooftop bars. Every corner felt like a postcard.",
+    placeIds: ["p1", "p6"],
+  },
+  {
+    id: "pt2",
+    travelerId: "t4",
+    title: "Architecture of Tokyo",
+    destination: "Tokyo, Japan",
+    coverImage: tokyo1,
+    dateRange: "Nov 4 – 9, 2025",
+    summary: "A week exploring Tokyo's contrast of ancient temples and futuristic design. Mind-blowing at every turn.",
+    placeIds: ["p3", "p8"],
+  },
+  {
+    id: "pt3",
+    travelerId: "t1",
+    title: "Parisian Autumn",
+    destination: "Paris, France",
+    coverImage: paris2,
+    dateRange: "Oct 2 – 6, 2025",
+    summary: "Café mornings and golden hour at Trocadéro. Paris never disappoints.",
+    placeIds: ["p2", "p7"],
+  },
+];
+
 export function getTraveler(id: string): Traveler | undefined {
   return travelers.find((t) => t.id === id);
 }
@@ -193,4 +237,8 @@ export function getPlace(id: string): Place | undefined {
 
 export function getTravelerPlaces(travelerId: string): Place[] {
   return places.filter((p) => p.checkIns.some((c) => c.travelerId === travelerId));
+}
+
+export function getTravelerPinnedTrips(travelerId: string): PinnedTrip[] {
+  return initialPinnedTrips.filter((pt) => pt.travelerId === travelerId);
 }

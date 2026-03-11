@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useTrips } from "@/contexts/TripContext";
 import { getPlace } from "@/data/mockData";
 import PlaceCard from "@/components/PlaceCard";
-import { Plus, MapPin, Trash2 } from "lucide-react";
+import { Plus, MapPin, Trash2, Pin } from "lucide-react";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 export default function MyTrips() {
   const { trips, addTrip, removePlaceFromTrip } = useTrips();
+  const navigate = useNavigate();
   const [showNew, setShowNew] = useState(false);
   const [newName, setNewName] = useState("");
   const [newDest, setNewDest] = useState("");
@@ -103,6 +105,19 @@ export default function MyTrips() {
             </div>
           );
         })}
+
+        {/* Create Pinned Trip CTA */}
+        <div className="rounded-2xl border border-dashed border-primary/30 bg-primary/5 p-5 text-center">
+          <Pin className="mx-auto h-6 w-6 text-primary" />
+          <h3 className="mt-2 font-sans text-sm font-semibold text-foreground">Been on a trip?</h3>
+          <p className="mt-1 text-xs text-muted-foreground">Create a Pinned Trip from your check-ins to showcase it on your profile.</p>
+          <button
+            onClick={() => navigate("/create-pinned-trip")}
+            className="mt-3 rounded-xl bg-primary px-5 py-2 text-sm font-medium text-primary-foreground"
+          >
+            Create Pinned Trip
+          </button>
+        </div>
       </div>
     </div>
   );
