@@ -1,9 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { getTraveler, getTravelerPlaces } from "@/data/mockData";
 import { usePinnedTrips } from "@/contexts/PinnedTripContext";
-import PlaceCard from "@/components/PlaceCard";
 import PinnedTripCard from "@/components/PinnedTripCard";
-import { ArrowLeft, Globe, MapPin, Pin, Plus } from "lucide-react";
+import MapView from "@/components/MapView";
+import { ArrowLeft, Globe, MapPin, Pin, Plus, Settings } from "lucide-react";
+import { useState } from "react";
 
 export default function TravelerProfile() {
   const { id } = useParams();
@@ -13,6 +14,7 @@ export default function TravelerProfile() {
   const { getPinnedTripsForTraveler } = usePinnedTrips();
   const pinnedTrips = getPinnedTripsForTraveler(id || "");
   const isOwnProfile = id === "t1";
+  const [selectedPlace, setSelectedPlace] = useState<typeof travelerPlaces[0] | null>(null);
 
   if (!traveler) {
     return (
@@ -22,58 +24,73 @@ export default function TravelerProfile() {
     );
   }
 
-  // Unique cities from check-ins
   const cities = [...new Set(travelerPlaces.map((p) => p.city))];
+  const countries = [...new Set(travelerPlaces.map((p) => p.country))];
 
   return (
     <div className="min-h-screen pb-20">
       <header className="sticky top-0 z-40 border-b border-border bg-background/95 px-4 py-3 backdrop-blur-md">
-        <div className="flex items-center gap-3">
-          {!isOwnProfile && (
-            <button onClick={() => navigate(-1)}>
-              <ArrowLeft className="h-5 w-5 text-foreground" />
-            </button>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            {!isOwnProfile && (
+              <button onClick={() => navigate(-1)}>
+                <ArrowLeft className="h-5 w-5 text-foreground" />
+              </button>
+            )}
+            <h1 className="text-lg font-display font-bold text-foreground">
+              {isOwnProfile ? traveler.name : "Profile"}
+            </h1>
+          </div>
+          {isOwnProfile && (
+            <Settings className="h-5 w-5 text-muted-foreground" />
           )}
-          <h1 className="text-lg font-display font-bold text-foreground">
-            {isOwnProfile ? "My Profile" : "Profile"}
-          </h1>
         </div>
       </header>
 
-      <div className="mx-auto max-w-lg px-4 pt-6">
-        {/* Identity header */}
-        <div className="flex flex-col items-center text-center">
+      <div className="mx-auto max-w-lg">
+        {/* Profile header */}
+        <div className="flex items-center gap-4 px-4 pt-5 pb-4">
           <img src={traveler.avatar} alt={traveler.name} className="h-20 w-20 rounded-full object-cover ring-4 ring-primary/20" />
-          <h2 className="mt-3 font-display text-xl font-bold text-foreground">{traveler.name}</h2>
-          <p className="mt-1 max-w-xs text-sm text-muted-foreground">{traveler.bio}</p>
-        </div>
-
-        {/* Stats row */}
-        <div className="mt-4 flex justify-center gap-6">
-          <div className="flex flex-col items-center">
-            <span className="text-lg font-bold text-foreground">{traveler.countriesVisited}</span>
-            <span className="text-[11px] text-muted-foreground flex items-center gap-0.5">
-              <Globe className="h-3 w-3 text-primary" /> Countries
-            </span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-lg font-bold text-foreground">{cities.length}</span>
-            <span className="text-[11px] text-muted-foreground flex items-center gap-0.5">
-              <MapPin className="h-3 w-3 text-primary" /> Cities
-            </span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-lg font-bold text-foreground">{pinnedTrips.length}</span>
-            <span className="text-[11px] text-muted-foreground flex items-center gap-0.5">
-              <Pin className="h-3 w-3 text-primary" /> Trips
-            </span>
+          <div className="flex-1">
+            <div className="flex justify-around text-center">
+              <div>
+                <span className="text-lg font-bold text-foreground">{travelerPlaces.length}</span>
+                <p className="text-[11px] text-muted-foreground">Check-ins</p>
+              </div>
+              <div>
+                <span className="text-lg font-bold text-foreground">{cities.length}</span>
+                <p className="text-[11px] text-muted-foreground">Cities</p>
+              </div>
+              <div>
+                <span className="text-lg font-bold text-foreground">{traveler.countriesVisited}</span>
+                <p className="text-[11px] text-muted-foreground">Countries</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Pinned Trips section */}
-        <div className="mt-7">
+        {/* Bio */}
+        <div className="px-4 pb-4">
+          <p className="text-sm text-foreground font-medium">{traveler.name}</p>
+          <p className="text-sm text-muted-foreground">{traveler.bio}</p>
+          {/* Country tags */}
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {countries.map((c) => (
+              <span key={c} className="inline-flex items-center gap-1 rounded-full bg-secondary px-2.5 py-1 text-[11px] font-medium text-secondary-foreground">
+                <Globe className="h-3 w-3 text-primary" />
+                {c}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Pinned Trips */}
+        <div className="px-4 pb-2">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-sans text-base font-semibold text-foreground">Pinned Trips</h3>
+            <h3 className="font-sans text-sm font-semibold text-foreground flex items-center gap-1.5">
+              <Pin className="h-3.5 w-3.5 text-primary" />
+              Pinned Trips
+            </h3>
             {isOwnProfile && (
               <button
                 onClick={() => navigate("/create-pinned-trip")}
@@ -90,17 +107,15 @@ export default function TravelerProfile() {
               ))}
             </div>
           ) : (
-            <div className="rounded-xl border border-dashed border-border bg-secondary/50 p-6 text-center">
-              <Pin className="mx-auto h-6 w-6 text-muted-foreground/50" />
-              <p className="mt-2 text-sm text-muted-foreground">
-                {isOwnProfile
-                  ? "Pin your first trip to showcase your travels!"
-                  : "No pinned trips yet."}
+            <div className="rounded-xl border border-dashed border-border bg-secondary/50 p-5 text-center">
+              <Pin className="mx-auto h-5 w-5 text-muted-foreground/50" />
+              <p className="mt-1.5 text-xs text-muted-foreground">
+                {isOwnProfile ? "Pin your first trip!" : "No pinned trips yet."}
               </p>
               {isOwnProfile && (
                 <button
                   onClick={() => navigate("/create-pinned-trip")}
-                  className="mt-3 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
+                  className="mt-2 rounded-lg bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground"
                 >
                   Create Pinned Trip
                 </button>
@@ -109,14 +124,40 @@ export default function TravelerProfile() {
           )}
         </div>
 
-        {/* Recent Check-ins */}
-        <div className="mt-7">
-          <h3 className="font-sans text-base font-semibold text-foreground mb-3">
-            Recent Check-Ins ({travelerPlaces.length})
+        {/* Check-ins Map */}
+        <div className="px-4 pt-2 pb-4">
+          <h3 className="font-sans text-sm font-semibold text-foreground mb-3 flex items-center gap-1.5">
+            <MapPin className="h-3.5 w-3.5 text-primary" />
+            Check-in Map ({travelerPlaces.length})
           </h3>
-          <div className="space-y-3">
+          <div className="rounded-2xl overflow-hidden border border-border shadow-sm" style={{ height: 280 }}>
+            <MapView
+              places={travelerPlaces}
+              onPlaceSelect={(p) => {
+                setSelectedPlace(p);
+                navigate(`/place/${p.id}`);
+              }}
+              selectedPlace={selectedPlace}
+              height="280px"
+            />
+          </div>
+
+          {/* Place list below map */}
+          <div className="mt-3 space-y-2">
             {travelerPlaces.map((place) => (
-              <PlaceCard key={place.id} place={place} style="compact" />
+              <button
+                key={place.id}
+                onClick={() => navigate(`/place/${place.id}`)}
+                className="w-full flex items-center gap-3 rounded-xl border border-border bg-card p-2.5 transition-shadow hover:shadow-sm text-left"
+              >
+                <img src={place.image} alt={place.name} className="h-12 w-12 rounded-lg object-cover" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-semibold text-foreground truncate">{place.name}</p>
+                  <p className="flex items-center gap-1 text-xs text-muted-foreground">
+                    <MapPin className="h-3 w-3" /> {place.city}
+                  </p>
+                </div>
+              </button>
             ))}
           </div>
         </div>
