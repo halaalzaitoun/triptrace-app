@@ -81,7 +81,7 @@ export default function MapDiscovery() {
       </header>
 
       {/* Map */}
-      <div className="flex-1 relative min-h-0" style={{ height: "calc(100vh - 180px)" }}>
+      <div className="flex-1 relative min-h-0">
         <MapView
           places={filtered}
           onPlaceSelect={setSelectedPlace}
