@@ -71,6 +71,9 @@ export default function MapView({
 
     mapInstanceRef.current = map;
 
+    // Ensure map fills container after render
+    setTimeout(() => map.invalidateSize(), 100);
+
     return () => {
       map.remove();
       mapInstanceRef.current = null;
@@ -148,7 +151,7 @@ export default function MapView({
   return (
     <div
       ref={mapRef}
-      style={{ height, width: "100%" }}
+      style={{ height, width: "100%", minHeight: "300px" }}
       className="rounded-xl overflow-hidden"
     />
   );

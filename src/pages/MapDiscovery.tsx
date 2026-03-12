@@ -35,7 +35,7 @@ export default function MapDiscovery() {
   }, [selectedCity, search]);
 
   return (
-    <div className="min-h-screen pb-20 flex flex-col">
+    <div className="h-screen pb-16 flex flex-col overflow-hidden">
       <header className="sticky top-0 z-40 border-b border-border bg-background/95 px-4 py-3 backdrop-blur-md">
         <div className="flex items-center justify-between">
           <h1 className="text-lg font-display font-bold text-foreground flex items-center gap-2">
@@ -81,7 +81,7 @@ export default function MapDiscovery() {
       </header>
 
       {/* Map */}
-      <div className="flex-1 relative" style={{ minHeight: "calc(100vh - 220px)" }}>
+      <div className="flex-1 relative min-h-0">
         <MapView
           places={filtered}
           onPlaceSelect={setSelectedPlace}
