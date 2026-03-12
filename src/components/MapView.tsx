@@ -124,6 +124,19 @@ export default function MapView({
     });
   }, [places, selectedPlace, onPlaceSelect]);
 
+  // Fly to new center/zoom when props change (city selection)
+  const prevCenter = useRef(center);
+  const prevZoom = useRef(zoom);
+  useEffect(() => {
+    const map = mapInstanceRef.current;
+    if (!map) return;
+    if (prevCenter.current[0] !== center[0] || prevCenter.current[1] !== center[1] || prevZoom.current !== zoom) {
+      map.flyTo(center as L.LatLngExpression, zoom, { duration: 0.8 });
+      prevCenter.current = center;
+      prevZoom.current = zoom;
+    }
+  }, [center, zoom]);
+
   useEffect(() => {
     const map = mapInstanceRef.current;
     if (!map || !selectedPlace) return;
