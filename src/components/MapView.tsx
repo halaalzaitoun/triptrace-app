@@ -148,7 +148,7 @@ export default function MapView({
   return (
     <div
       ref={mapRef}
-      style={{ height, width: "100%" }}
+      style={{ height, width: "100%", minHeight: "300px" }}
       className="rounded-xl overflow-hidden"
     />
   );
