@@ -71,6 +71,9 @@ export default function MapView({
 
     mapInstanceRef.current = map;
 
+    // Ensure map fills container after render
+    setTimeout(() => map.invalidateSize(), 100);
+
     return () => {
       map.remove();
       mapInstanceRef.current = null;
