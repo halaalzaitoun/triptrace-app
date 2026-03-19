@@ -142,12 +142,6 @@ The project demonstrates how quickly a new product concept can move from idea �
 
 ---
 
-## 📸 Screenshots
-
-(Add screenshots here once captured)
-
----
-
 ## 💡 Author
 
 **Hala Alzaitoun**
