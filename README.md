@@ -126,7 +126,7 @@ TripTrace was created as part of a product management portfolio to explore:
 
 ---
 
-## 🖼 Screenshots
+## 🖼 Product Screenshots
 
 ### Discovery Feed
 <img src="assets/home-feed.png" width="600"/>
