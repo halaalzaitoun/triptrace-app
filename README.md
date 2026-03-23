@@ -86,13 +86,16 @@ The goal is to make travel discovery authentic, social, and experience-driven.
 <img src="assets/explore-map.png" width="600"/>
 
 ### Trip Planning
-<img src="assets/trip-planning.png" width="600"/>
+<img src="assets/plan-new-trip.png" width="600"/>
 
 ### My Trips
 <img src="assets/my-trips.png" width="600"/>
 
 ### Check-in Flow
-<img src="assets/checkin.png" width="600"/>
+<img src="assets/place-detail.png" width="600"/>
+
+### Create Pinned Trip
+<img src="assets/create-pinned-trip.png" width="600"/>
 
 ### Profile (Travel Identity)
 <img src="assets/profile.png" width="600"/>
