@@ -79,7 +79,23 @@ The goal is to make travel discovery authentic, social, and experience-driven.
 
 ## 🖼 Screenshots
 
+### Discovery Feed
+<img src="assets/home-feed.png" width="600"/>
 
+### Map View
+<img src="assets/explore-map.png" width="600"/>
+
+### Trip Planning
+<img src="assets/trip-planning.png" width="600"/>
+
+### My Trips
+<img src="assets/my-trips.png" width="600"/>
+
+### Check-in Flow
+<img src="assets/checkin.png" width="600"/>
+
+### Profile (Travel Identity)
+<img src="assets/profile.png" width="600"/>
 
 ---
 
