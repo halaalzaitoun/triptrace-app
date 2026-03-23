@@ -1,151 +1,140 @@
 # TripTrace
 
-**Discover places through people you trust.**
+Discover places through people you trust.
 
-TripTrace is a social travel discovery platform that helps travelers find places based on **real experiences from people**, not generic travel lists.
+---
 
-Instead of browsing blog posts or influencer guides, users can explore places where their friends and other travelers actually went, see their check-ins, and save locations for future trips.
+## Overview
+
+TripTrace is a social travel discovery platform that helps users find places based on real experiences from people, not generic travel lists.
+
+Instead of relying on blog posts or influencer guides, users explore places where their friends and other travelers actually went, see their check-ins, and save locations for future trips.
+
+---
+
+## 🎯 Problem
+
+Travel discovery today is often unreliable and fragmented:
+
+- Blog lists are optimized for SEO rather than real experiences
+- Influencer recommendations are often sponsored
+- Generic rankings lack context and personalization
+
+Users struggle to find trustworthy, relevant recommendations and end up jumping between multiple tools to plan trips.
+
+---
+
+## 💡 Solution
+
+TripTrace uses real traveler activity as the foundation for discovery.
+
+Users can:
+- Discover places visited by people they trust
+- Plan trips privately
+- Check in to places they actually visit
+- Build a curated travel history
+
+The goal is to make travel discovery authentic, social, and experience-driven.
+
+---
+
+## 👥 Target Users
+
+- Travelers who value authentic recommendations over curated lists
+- Users who rely on friends or trusted communities for travel decisions
+- People who want to both plan trips and document their experiences
+
+---
+
+## 🔄 Core User Journey
+
+1. User discovers places through the social feed  
+2. Saves interesting places to a trip  
+3. Plans their trip privately  
+4. Visits places and checks in  
+5. Shares experiences with their network  
+6. Builds a long-term travel profile  
+
+---
+
+## ✨ MVP Features
+
+- Travel discovery feed
+- Place detail pages
+- Private trip planning
+- Traveler profiles
+- Map-based discovery
+- Social check-ins
+
+---
+
+## ⚖️ Product Decisions and Tradeoffs
+
+- Prioritized social discovery over booking integrations to focus on core differentiation
+- Kept trip planning private by default to reduce user friction
+- Focused on check-ins as the primary signal of trust instead of reviews
+- Limited scope to validate the core loop: discover → save → visit → share
+
+---
+
+## 🖼 Screenshots
+
+
+
+---
+
+## 🧑‍💻 Tech Stack
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn-ui
+
+This prototype was generated using AI-assisted development and initially built with the Lovable AI app builder.
 
 ---
 
 ## 🌍 Live Demo
 
-**App:** https://triptrace-app.lovable.app
+App: https://triptrace-app.lovable.app
 
 ---
 
-## 🚀 Product Vision
+## 📄 Product Docs
 
-Travel recommendations today often feel unreliable:
-
-* blog lists optimized for SEO
-* influencer posts that are sponsored
-* generic rankings that lack context
-
-TripTrace solves this by using **real traveler activity** as the foundation for discovery.
-
-Users can:
-
-* discover places visited by people they trust
-* plan trips privately
-* check in to places they actually visit
-* curate their travel history
-
-The goal is to make travel discovery **authentic, social, and experience-driven**.
+- [PRD](product/prd.md)
+- [Roadmap](product/roadmap.md)
+- [Product Decisions](product/decisions.md)
 
 ---
 
-## ✨ Core Product Concept
+## 🔮 What’s Next
 
-TripTrace is built around three key layers:
-
-### 1. Private Trip Planning
-
-Users can plan trips privately by saving places they want to visit.
-
-Features:
-
-* create trips
-* save places
-* organize destinations
-
-Trip plans remain **private to the user**.
+- Pinned trip highlights for curated experiences
+- Social engagement features (likes and comments)
+- Travel route visualization
+- Personalized recommendations
+- Business pages for local places
+- Traveler reputation signals
+- Trip evaluation insights (e.g., safety, transportation accessibility, Uber availability, car rental options)
 
 ---
 
-### 2. Social Travel Activity
+## Why This Project Exists
 
-When traveling, users can **check in to places they visit**.
+TripTrace was created as part of a product management portfolio to explore:
 
-Check-ins are shared with their network and appear in the discovery feed.
-
-Features:
-
-* check in to any place
-* attach comments or photos
-* like and comment on other travelers’ check-ins
+- Social discovery mechanics
+- Trust-based recommendation systems
+- AI-assisted product prototyping
+- End-to-end product thinking from idea to MVP
 
 ---
 
-### 3. Travel Identity
+## Author
 
-Users can curate their travel experiences on their profile.
-
-Trips can be turned into **Pinned Trips**, similar to curated highlights.
-
-Features:
-
-* display visited destinations
-* showcase favorite trips
-* build a travel identity over time
-
----
-
-## 🧑‍💻 Technology Stack
-
-This prototype was generated using AI-assisted development and built with:
-
-* React
-* TypeScript
-* Vite
-* Tailwind CSS
-* shadcn-ui
-
-The project was initially created using the **Lovable AI app builder** and then exported to GitHub for further development.
-
----
-
-## 📱 Current MVP Features
-
-* travel discovery feed
-* place detail pages
-* private trip planning
-* traveler profiles
-* map-based discovery
-* social check-ins
-
----
-
-## 🔮 Future Product Direction
-
-Planned improvements include:
-
-* pinned trip highlights
-* social engagement (likes/comments)
-* travel route visualization
-* personalized recommendations
-* business pages for local places
-* traveler reputation signals
-
-See the **product roadmap** for more details.
-
----
-
-## 🗺 Roadmap
-
-Product planning and future features are documented here:
-
-`product/roadmap.md`
-
----
-
-## 🎯 Why This Project Exists
-
-TripTrace was created as part of a **product management portfolio project** to explore:
-
-* AI-assisted product prototyping
-* social discovery mechanics
-* travel recommendation systems
-* product design thinking
-
-The project demonstrates how quickly a new product concept can move from idea → prototype using modern AI development tools.
-
----
-
-## 💡 Author
-
-**Hala Alzaitoun**
-
-Technical Product Manager with a background in software engineering and cloud systems.
+Hala Alzaitoun  
+Technical Product Manager with a background in software engineering and cloud systems  
 
 GitHub: https://github.com/halaalzaitoun
