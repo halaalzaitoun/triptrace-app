@@ -129,25 +129,25 @@ TripTrace was created as part of a product management portfolio to explore:
 ## 🖼 Product Screenshots
 
 ### Discovery Feed
-<img src="assets/home-feed.png" width="600"/>
+<img src="assets/home-feed.png" width="300"/>
 
 ### Map View
-<img src="assets/explore-map.png" width="600"/>
+<img src="assets/explore-map.png" width="300"/>
 
 ### Trip Planning
-<img src="assets/plan-new-trip.png" width="600"/>
+<img src="assets/plan-new-trip.png" width="300"/>
 
 ### My Trips
-<img src="assets/my-trips.png" width="600"/>
+<img src="assets/my-trips.png" width="300"/>
 
 ### Check-in Flow
-<img src="assets/place-detail.png" width="600"/>
+<img src="assets/place-detail.png" width="300"/>
 
 ### Create Pinned Trip
-<img src="assets/create-pinned-trip.png" width="600"/>
+<img src="assets/create-pinned-trip.png" width="300"/>
 
 ### Profile (Travel Identity)
-<img src="assets/profile.png" width="600"/>
+<img src="assets/profile.png" width="300"/>
 
 ---
 
