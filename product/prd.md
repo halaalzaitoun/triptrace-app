@@ -1,273 +1,113 @@
 # TripTrace Product Requirements Document (PRD)
 
-## Product Name
+---
 
-TripTrace
+## 1. Overview
 
-## Tagline
+TripTrace is a social travel discovery platform that helps users find places based on real experiences from people they trust.
 
-Discover places through people you trust.
+The product focuses on replacing generic travel recommendations with authentic, experience-driven discovery powered by user activity.
 
 ---
 
-# 1. Overview
+## 2. Problem
 
-TripTrace is a social travel discovery platform that helps travelers find places to visit based on **real experiences from other travelers**.
+Travel discovery today is fragmented and often unreliable:
 
-Instead of relying on blog posts, curated travel lists, or sponsored influencer content, TripTrace surfaces **authentic travel experiences** through user check-ins and recommendations.
+- Blog posts are optimized for SEO rather than real value  
+- Influencer content may be biased or sponsored  
+- Generic rankings lack context and personalization  
 
-The platform allows users to:
-
-* discover places through traveler activity
-* privately plan trips
-* check in to places they visit
-* curate travel memories on their profiles
+Users struggle to find trustworthy recommendations and often rely on scattered tools to plan trips.
 
 ---
 
-# 2. Problem Statement
+## 3. Goals
 
-Travel discovery today suffers from several issues:
+### Primary Goals
+- Enable users to discover places through real traveler activity  
+- Allow users to plan and organize trips easily  
+- Encourage users to contribute content through check-ins  
 
-### Unreliable recommendations
-
-Many travel lists are optimized for SEO or advertising rather than genuine recommendations.
-
-### Sponsored influencer content
-
-Travel recommendations are often influenced by sponsorships and promotions.
-
-### Lack of context
-
-Most platforms show what places are popular but not **who actually visited them** or why they were meaningful.
-
-### Planning vs reality mismatch
-
-Travel planning apps focus on itineraries, but travelers often change plans once they arrive.
+### Success Metrics (MVP)
+- % of users saving at least one place  
+- % of users completing a check-in  
+- Average number of places saved per trip  
+- Engagement with discovery feed  
 
 ---
 
-# 3. Product Goals
+## 4. Target Users
 
-TripTrace aims to:
-
-1. Enable travelers to discover places through **trusted social signals**.
-2. Separate **trip planning** from **actual travel experiences**.
-3. Allow users to build a **travel identity** over time.
-4. Create a discovery ecosystem based on **real traveler behavior**.
+- Travelers seeking authentic recommendations  
+- Users who rely on friends or trusted communities  
+- Users who want both discovery and planning in one place  
 
 ---
 
-# 4. Target Users
+## 5. Core User Flow
 
-## Primary Users
-
-Young professionals and frequent travelers who:
-
-* enjoy discovering new places
-* rely on recommendations from friends
-* share travel experiences online
-* want a lightweight way to track their travel history
-
-## Secondary Users
-
-Travel creators, local explorers, and digital nomads who frequently share travel experiences.
+1. User opens the app and browses discovery feed  
+2. User finds places from other travelers  
+3. User saves places to a trip  
+4. User plans their itinerary privately  
+5. User visits a place and checks in  
+6. Check-in appears in feed and influences discovery  
 
 ---
 
-# 5. Core Product Concepts
-
-TripTrace is built around three key product layers.
-
-## 1. Private Trip Planning
-
-Users can privately plan trips by saving places they want to visit.
-
-Features:
-
-* create trips
-* save places
-* organize destinations
-
-Trip plans are **private to the user**.
-
----
-
-## 2. Public Check-Ins
-
-Users can check in to places they visit.
-
-Check-ins include:
-
-* location
-* optional comment
-* optional photo
-* timestamp
-
-Check-ins appear in the discovery feed and are visible to the user's network.
-
----
-
-## 3. Travel Identity
-
-Users can curate their travel experiences on their profiles.
-
-Features:
-
-* visited places
-* travel statistics
-* pinned trips
-
-Pinned trips highlight meaningful travel experiences.
-
----
-
-# 6. User Flow
-
-### Planning Phase
-
-User creates a trip and saves places they want to visit.
-
-Example:
-
-Paris Trip
-Saved places:
-
-* Louvre Museum
-* Café de Flore
-* Montmartre
-
-This data remains private.
-
----
-
-### Travel Phase
-
-While traveling, users check in to places they actually visit.
-
-Example:
-
-Check-in
-Location: Café de Flore
-Comment: "Great coffee and amazing atmosphere."
-
-Check-ins appear in the social feed.
-
----
-
-### Post-Trip Phase
-
-Users can convert check-ins into **Pinned Trips** on their profiles.
-
-Pinned trips display:
-
-* trip title
-* cover image
-* selected check-ins
-* summary of the trip
-
----
-
-# 7. MVP Features
-
-The first version of TripTrace includes:
-
-* discovery feed
-* place detail pages
-* traveler profiles
-* private trip planning
-* saving places
-* map-based discovery
-
----
-
-# 8. Future Features
-
-## Social Layer
-
-* likes on check-ins
-* comments on check-ins
-* following travelers
-
-## Discovery Improvements
-
-* personalized recommendations
-* trending destinations
-* hidden gem highlights
-
-## Business Ecosystem
-
-* verified business pages
-* traveler reviews
-* business photo galleries
-* featured traveler visits
-
-## Travel Planning
-
-* collaborative trip planning
-* route visualization
-* itinerary builder
-
----
-
-# 9. Success Metrics
-
-Key metrics for TripTrace include:
-
-### Engagement
-
-* number of check-ins per user
-* likes and comments per check-in
-* session duration
+## 6. Features (MVP Scope)
 
 ### Discovery
+- Social feed of traveler check-ins  
+- Place detail pages  
 
-* places viewed per session
-* saves to trips
+### Trip Planning
+- Create trips  
+- Save places  
+- Organize destinations  
 
-### Retention
+### Social Activity
+- Check-ins with optional notes/photos  
+- Basic engagement (viewing others’ activity)  
 
-* monthly active users
-* returning travelers after trips
-
----
-
-# 10. Monetization Opportunities
-
-Potential monetization models include:
-
-### Business Pages
-
-Local businesses can create profiles to showcase their locations.
-
-### Promoted Locations
-
-Businesses can highlight their location in discovery feeds.
-
-### Affiliate Travel Partnerships
-
-Hotels and tours could integrate booking links.
+### Profile
+- User profiles  
+- Travel history  
 
 ---
 
-# 11. Risks
+## 7. Out of Scope (MVP)
 
-### Content authenticity
-
-Users may attempt to game the system with fake check-ins.
-
-### Network effects
-
-Early user growth may be slow without sufficient traveler activity.
-
-### Platform competition
-
-Travel discovery overlaps with existing platforms like Google Maps and Instagram.
+- Booking integrations  
+- Advanced recommendation algorithms  
+- Monetization features  
+- Full social interactions (comments, follows, etc.)  
 
 ---
 
-# 12. Long-Term Vision
+## 8. Key Product Decisions
 
-TripTrace becomes a travel discovery ecosystem powered by **real traveler experiences**.
+- Prioritize social discovery over generic recommendations  
+- Use check-ins as the primary trust signal  
+- Separate private planning from social sharing  
+- Focus on core loop: discover → save → visit → share  
 
-Instead of exploring the world through curated lists, travelers discover places through the **traces left by other travelers**.
+---
+
+## 9. Risks and Challenges
+
+- Cold start problem (limited content initially)  
+- User adoption of check-in behavior  
+- Balancing privacy with social sharing  
+- Ensuring content quality and trust  
+
+---
+
+## 10. Future Opportunities
+
+- Personalized recommendations  
+- Traveler reputation system  
+- Trip evaluation insights (safety, transportation, etc.)  
+- Social interactions (likes, comments, follows)  
+- Integration with maps and real-time data  
