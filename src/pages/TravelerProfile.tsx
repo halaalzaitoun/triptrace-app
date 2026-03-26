@@ -3,7 +3,7 @@ import { getTraveler, getTravelerPlaces } from "@/data/mockData";
 import { usePinnedTrips } from "@/contexts/PinnedTripContext";
 import PinnedTripCard from "@/components/PinnedTripCard";
 import MapView from "@/components/MapView";
-import { ArrowLeft, Globe, MapPin, Pin, Plus, Settings } from "lucide-react";
+import { ArrowLeft, Globe, MapPin, Pin, Plus, Settings, Compass } from "lucide-react";
 import { useState } from "react";
 
 export default function TravelerProfile() {
@@ -29,28 +29,38 @@ export default function TravelerProfile() {
 
   return (
     <div className="min-h-screen pb-20">
-      <header className="sticky top-0 z-40 border-b border-border bg-background/95 px-4 py-3 backdrop-blur-md">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            {!isOwnProfile && (
-              <button onClick={() => navigate(-1)}>
-                <ArrowLeft className="h-5 w-5 text-foreground" />
+      <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-md">
+        <div className="relative px-4 py-3">
+          <div className="absolute inset-0 travel-dots opacity-20 pointer-events-none" />
+          <div className="relative flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              {!isOwnProfile && (
+                <button onClick={() => navigate(-1)}>
+                  <ArrowLeft className="h-5 w-5 text-foreground" />
+                </button>
+              )}
+              <h1 className="text-lg font-display font-bold text-foreground">
+                {isOwnProfile ? traveler.name : "Profile"}
+              </h1>
+            </div>
+            {isOwnProfile && (
+              <button className="h-8 w-8 rounded-xl bg-secondary flex items-center justify-center">
+                <Settings className="h-4 w-4 text-muted-foreground" />
               </button>
             )}
-            <h1 className="text-lg font-display font-bold text-foreground">
-              {isOwnProfile ? traveler.name : "Profile"}
-            </h1>
           </div>
-          {isOwnProfile && (
-            <Settings className="h-5 w-5 text-muted-foreground" />
-          )}
         </div>
       </header>
 
       <div className="mx-auto max-w-lg">
         {/* Profile header */}
         <div className="flex items-center gap-4 px-4 pt-5 pb-4">
-          <img src={traveler.avatar} alt={traveler.name} className="h-20 w-20 rounded-full object-cover ring-4 ring-primary/20" />
+          <div className="relative">
+            <img src={traveler.avatar} alt={traveler.name} className="h-20 w-20 rounded-full object-cover ring-4 ring-primary/20" />
+            <div className="absolute -bottom-1 -right-1 h-6 w-6 rounded-full bg-primary flex items-center justify-center border-2 border-background">
+              <Compass className="h-3.5 w-3.5 text-primary-foreground" />
+            </div>
+          </div>
           <div className="flex-1">
             <div className="flex justify-around text-center">
               <div>
@@ -73,11 +83,10 @@ export default function TravelerProfile() {
         <div className="px-4 pb-4">
           <p className="text-sm text-foreground font-medium">{traveler.name}</p>
           <p className="text-sm text-muted-foreground">{traveler.bio}</p>
-          {/* Country tags */}
           <div className="mt-2 flex flex-wrap gap-1.5">
             {countries.map((c) => (
-              <span key={c} className="inline-flex items-center gap-1 rounded-full bg-secondary px-2.5 py-1 text-[11px] font-medium text-secondary-foreground">
-                <Globe className="h-3 w-3 text-primary" />
+              <span key={c} className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary">
+                <Globe className="h-3 w-3" />
                 {c}
               </span>
             ))}
@@ -107,15 +116,15 @@ export default function TravelerProfile() {
               ))}
             </div>
           ) : (
-            <div className="rounded-xl border border-dashed border-border bg-secondary/50 p-5 text-center">
-              <Pin className="mx-auto h-5 w-5 text-muted-foreground/50" />
+            <div className="rounded-xl border border-dashed border-primary/30 bg-primary/5 p-5 text-center">
+              <Pin className="mx-auto h-5 w-5 text-primary/50" />
               <p className="mt-1.5 text-xs text-muted-foreground">
                 {isOwnProfile ? "Pin your first trip!" : "No pinned trips yet."}
               </p>
               {isOwnProfile && (
                 <button
                   onClick={() => navigate("/create-pinned-trip")}
-                  className="mt-2 rounded-lg bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground"
+                  className="mt-2 rounded-xl bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground"
                 >
                   Create Pinned Trip
                 </button>
@@ -142,19 +151,18 @@ export default function TravelerProfile() {
             />
           </div>
 
-          {/* Place list below map */}
           <div className="mt-3 space-y-2">
             {travelerPlaces.map((place) => (
               <button
                 key={place.id}
                 onClick={() => navigate(`/place/${place.id}`)}
-                className="w-full flex items-center gap-3 rounded-xl border border-border bg-card p-2.5 transition-shadow hover:shadow-sm text-left"
+                className="w-full flex items-center gap-3 rounded-xl border border-border bg-card p-3 transition-shadow hover:shadow-sm text-left"
               >
                 <img src={place.image} alt={place.name} className="h-12 w-12 rounded-lg object-cover" />
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-foreground truncate">{place.name}</p>
                   <p className="flex items-center gap-1 text-xs text-muted-foreground">
-                    <MapPin className="h-3 w-3" /> {place.city}
+                    <MapPin className="h-3 w-3 text-primary" /> {place.city}
                   </p>
                 </div>
               </button>
