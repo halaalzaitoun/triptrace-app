@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { MapPin } from "lucide-react";
+import { MapPin, Users } from "lucide-react";
 import { Place, getTraveler } from "@/data/mockData";
 import PlaceTag from "./PlaceTag";
 import SaveButton from "./SaveButton";
@@ -25,13 +25,18 @@ export default function PlaceCard({ place, style = "feed" }: PlaceCardProps) {
           <div>
             <h3 className="text-sm font-semibold font-sans text-foreground">{place.name}</h3>
             <p className="flex items-center gap-1 text-xs text-muted-foreground">
-              <MapPin className="h-3 w-3" /> {place.city}, {place.country}
+              <MapPin className="h-3 w-3 text-primary" /> {place.city}, {place.country}
             </p>
           </div>
-          <div className="flex gap-1.5">
-            {place.tags.slice(0, 1).map((tag) => (
-              <PlaceTag key={tag} tag={tag} />
-            ))}
+          <div className="flex items-center justify-between">
+            <div className="flex gap-1.5">
+              {place.tags.slice(0, 1).map((tag) => (
+                <PlaceTag key={tag} tag={tag} />
+              ))}
+            </div>
+            <span className="text-[10px] text-muted-foreground flex items-center gap-1">
+              <Users className="h-3 w-3" /> {place.checkIns.length}
+            </span>
           </div>
         </div>
       </div>
@@ -48,17 +53,22 @@ export default function PlaceCard({ place, style = "feed" }: PlaceCardProps) {
         <div className="absolute right-3 top-3">
           <SaveButton placeId={place.id} />
         </div>
+        {/* Check-in count */}
+        <div className="absolute top-3 left-3 flex items-center gap-1 rounded-full bg-primary/90 backdrop-blur-sm px-2 py-1">
+          <Users className="h-3 w-3 text-primary-foreground" />
+          <span className="text-[10px] font-medium text-primary-foreground">{place.checkIns.length}</span>
+        </div>
       </div>
       <div className="p-4">
         {traveler && (
           <div className="mb-2.5 flex items-center gap-2">
-            <img src={traveler.avatar} alt={traveler.name} className="h-7 w-7 rounded-full object-cover" />
+            <img src={traveler.avatar} alt={traveler.name} className="h-7 w-7 rounded-full object-cover ring-2 ring-primary/20" />
             <span className="text-xs font-medium text-foreground">{traveler.name}</span>
           </div>
         )}
         <h3 className="font-sans text-base font-semibold text-foreground">{place.name}</h3>
         <p className="mb-2 flex items-center gap-1 text-sm text-muted-foreground">
-          <MapPin className="h-3.5 w-3.5" /> {place.city}, {place.country}
+          <MapPin className="h-3.5 w-3.5 text-primary" /> {place.city}, {place.country}
         </p>
         {firstCheckIn && (
           <p className="mb-3 text-sm text-muted-foreground italic leading-relaxed">

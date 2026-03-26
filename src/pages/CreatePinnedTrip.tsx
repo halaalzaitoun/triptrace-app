@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Check, MapPin } from "lucide-react";
+import { ArrowLeft, Check, MapPin, Compass } from "lucide-react";
 import { getTravelerPlaces, getPlace, Place } from "@/data/mockData";
 import { usePinnedTrips } from "@/contexts/PinnedTripContext";
 import { toast } from "sonner";
@@ -9,7 +9,6 @@ export default function CreatePinnedTrip() {
   const navigate = useNavigate();
   const { addPinnedTrip } = usePinnedTrips();
 
-  // Current user's check-ins (t1)
   const checkedInPlaces = getTravelerPlaces("t1");
 
   const [title, setTitle] = useState("");
@@ -48,12 +47,20 @@ export default function CreatePinnedTrip() {
 
   return (
     <div className="min-h-screen pb-20">
-      <header className="sticky top-0 z-40 border-b border-border bg-background/95 px-4 py-3 backdrop-blur-md">
-        <div className="flex items-center gap-3">
-          <button onClick={() => navigate(-1)}>
-            <ArrowLeft className="h-5 w-5 text-foreground" />
-          </button>
-          <h1 className="text-lg font-display font-bold text-foreground">Create Pinned Trip</h1>
+      <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-md">
+        <div className="relative px-4 py-3">
+          <div className="absolute inset-0 travel-dots opacity-20 pointer-events-none" />
+          <div className="relative flex items-center gap-3">
+            <button onClick={() => navigate(-1)}>
+              <ArrowLeft className="h-5 w-5 text-foreground" />
+            </button>
+            <div className="flex items-center gap-2">
+              <div className="h-7 w-7 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Compass className="h-4 w-4 text-primary" />
+              </div>
+              <h1 className="text-lg font-display font-bold text-foreground">Create Pinned Trip</h1>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -64,7 +71,7 @@ export default function CreatePinnedTrip() {
             placeholder="e.g. Golden Hour in Lisbon"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="mt-1 w-full rounded-xl bg-secondary px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-primary/30"
+            className="mt-1 w-full rounded-xl bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none border border-border focus:ring-2 focus:ring-primary/30"
           />
         </div>
 
@@ -74,7 +81,7 @@ export default function CreatePinnedTrip() {
             placeholder="e.g. Lisbon, Portugal"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
-            className="mt-1 w-full rounded-xl bg-secondary px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-primary/30"
+            className="mt-1 w-full rounded-xl bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none border border-border focus:ring-2 focus:ring-primary/30"
           />
         </div>
 
@@ -84,7 +91,7 @@ export default function CreatePinnedTrip() {
             placeholder="e.g. Sep 14 – 18, 2025"
             value={dateRange}
             onChange={(e) => setDateRange(e.target.value)}
-            className="mt-1 w-full rounded-xl bg-secondary px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-primary/30"
+            className="mt-1 w-full rounded-xl bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none border border-border focus:ring-2 focus:ring-primary/30"
           />
         </div>
 
@@ -95,7 +102,7 @@ export default function CreatePinnedTrip() {
             value={summary}
             onChange={(e) => setSummary(e.target.value)}
             rows={3}
-            className="mt-1 w-full rounded-xl bg-secondary px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none resize-none focus:ring-2 focus:ring-primary/30"
+            className="mt-1 w-full rounded-xl bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground outline-none resize-none border border-border focus:ring-2 focus:ring-primary/30"
           />
         </div>
 
@@ -111,7 +118,7 @@ export default function CreatePinnedTrip() {
                 <button
                   key={place.id}
                   onClick={() => togglePlace(place.id)}
-                  className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left transition-all ${
+                  className={`flex w-full items-center gap-3 rounded-xl border p-3.5 text-left transition-all ${
                     selected
                       ? "border-primary bg-primary/5 ring-1 ring-primary/20"
                       : "border-border bg-card hover:bg-secondary"
@@ -121,7 +128,7 @@ export default function CreatePinnedTrip() {
                   <div className="flex-1 min-w-0">
                     <h4 className="text-sm font-semibold text-foreground truncate">{place.name}</h4>
                     <p className="flex items-center gap-1 text-xs text-muted-foreground">
-                      <MapPin className="h-3 w-3" /> {place.city}, {place.country}
+                      <MapPin className="h-3 w-3 text-primary" /> {place.city}, {place.country}
                     </p>
                   </div>
                   <div
@@ -142,7 +149,7 @@ export default function CreatePinnedTrip() {
         <button
           onClick={handleCreate}
           disabled={!canSubmit}
-          className="w-full rounded-xl bg-primary py-3 text-sm font-semibold text-primary-foreground transition-opacity disabled:opacity-40"
+          className="w-full rounded-xl bg-primary py-3 text-sm font-semibold text-primary-foreground transition-opacity disabled:opacity-40 shadow-sm"
         >
           Pin This Trip to Profile
         </button>
