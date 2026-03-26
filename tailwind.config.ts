@@ -59,6 +59,11 @@ export default {
           visitors: "hsl(var(--tag-visitors))",
           "visitors-foreground": "hsl(var(--tag-visitors-foreground))",
         },
+        travel: {
+          path: "hsl(var(--travel-path))",
+          pin: "hsl(var(--travel-pin))",
+          highlight: "hsl(var(--travel-highlight))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
